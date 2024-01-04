@@ -1,6 +1,7 @@
 import { Box, InputBase, Button, styled } from "@mui/material";
 import { useState } from "react";
 import { getWeather } from "../services/api";
+// import LocationDetector from "./LocationDetector";
 
 const Container = styled(Box)({
     background: '#445A6F',
@@ -23,7 +24,6 @@ const Form = ({setResult}) => {
 
     const handleChange = (e) => {
         setData({...data, [e.target.name]: e.target.value});
-        // console.log(data,"data");
     }
 
     const getWeatherInfo = async () => {
@@ -49,6 +49,9 @@ const Form = ({setResult}) => {
                 >
                 Get Weather
             </GetButton>
+            {/* <Button className="text-center m-auto">
+                <LocationDetector setResult={setResult} />
+            </Button> */}
         </Container>
     )
 }

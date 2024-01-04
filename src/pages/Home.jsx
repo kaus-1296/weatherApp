@@ -3,6 +3,9 @@ import Sunset from '../assests/images/bg.jpg';
 import Form from "../components/Form";
 import Information from "../components/Information";
 import { useState } from "react";
+import LocationDetector from "../components/LocationDetector";
+
+
 
 const Component = styled(Box)({
     height: '100vh',
@@ -29,6 +32,7 @@ const Home = () => {
             <Image></Image>
             <Box style={{ width: '73%', height: '80%'}}>
                 <Form setResult={setResult} />
+                <p className="text-center pt-2"><LocationDetector result={result} /></p>
                 <Information result={result} />
             </Box>
         </Component>

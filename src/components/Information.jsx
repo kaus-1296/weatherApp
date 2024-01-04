@@ -67,34 +67,8 @@ const Information = ({ result }) => {
                 <Row><LocationOn />Location: {result.location.name}</Row>
                 <Row><SettingsBrightness />Temperature: {result.current.temp_c}</Row>
                 <Row><Opacity />Humidity: {result.current.humidity}</Row>
-                {/* <Row><Brightness5 />Sun rise: {new Date(result.sys.sunrise * 1000).toLocaleTimeString()}</Row>
-            <Row><Brightness6 />Sun set: {new Date(result.sys.sunset * 1000).toLocaleTimeString()}</Row>
-            <Row><Dehaze />Humidity: {result.weather[0].main}</Row> */}
                 <Row><Cloud />Clouds: {result.current.cloud}</Row>
                 <Box>
-                    {/* <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
-                        <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span className="sr-only">Previous</span>
-                        </a>
-                        <div className="carousel-inner d-flex align-items-center text-center pad_top">
-                            {result.forecast.forecastday.map((day, index) => (
-                                <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                                    <div className="d-block w-100 h-100">
-                                        <p>Date: {formatDate(day.date)}</p>
-                                        <p>Sunrise: {day.astro.sunrise}</p>
-                                        <p>Sunset: {day.astro.sunset}</p>
-                                        <p>Max Temperature: {day.day.maxtemp_c}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span className="sr-only">Next</span>
-                        </a>
-                    </div> */}
-
                     <Swiper
                         spaceBetween={50}
                         slidesPerView={3}
@@ -103,14 +77,6 @@ const Information = ({ result }) => {
                     >
                         {
                             result.forecast.forecastday.map((day, index) => (
-                                // <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                                //     <div className="d-block w-100 h-100">
-                                //         <p>Date: {formatDate(day.date)}</p>
-                                //         <p>Sunrise: {day.astro.sunrise}</p>
-                                //         <p>Sunset: {day.astro.sunset}</p>
-                                //         <p>Max Temperature: {day.day.maxtemp_c}</p>
-                                //     </div>
-                                // </div>
                                     <SwiperSlide key={index} className="d-block margin_top border border-dark rounded-2 background_Color">
                                          <p className="text-center">Date: {formatDate(day.date)}</p>
                                          <p className="py-2 text-center">Sunrise: {convertTo24HourFormat(day.astro.sunrise)}</p>
