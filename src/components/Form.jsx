@@ -1,7 +1,6 @@
 import { Box, InputBase, Button, styled } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getWeather } from "../services/api";
-// import LocationDetector from "./LocationDetector";
 
 const Container = styled(Box)({
     background: '#445A6F',
@@ -19,7 +18,7 @@ const GetButton = styled(Button)({
     width: 150
 })
 
-const Form = ({setResult}) => {
+const Form = ({setResult, city}) => {
     const [data, setData] = useState({city: '', country: ''})
 
     const handleChange = (e) => {
@@ -31,12 +30,17 @@ const Form = ({setResult}) => {
         setResult(response)
     }
 
+    useEffect(() => {
+        setData({...data, city: city?.location?.name});
+    },[city]);
+
     return (
         <Container>
             <Input 
                 placeholder="City"
                 onChange={(e) => handleChange(e)}
                 name="city"
+                value={data.city}
             />
             <Input 
                 placeholder="Country"
@@ -49,9 +53,6 @@ const Form = ({setResult}) => {
                 >
                 Get Weather
             </GetButton>
-            {/* <Button className="text-center m-auto">
-                <LocationDetector setResult={setResult} />
-            </Button> */}
         </Container>
     )
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { getUsingLatLong } from "../services/api";
 
-const LocationDetector = () => {
+const LocationDetector = ({setCityName}) => {
   const [location, setLocation] = useState(null);
   const [error, setError] = useState(null);
 
@@ -24,7 +25,18 @@ const LocationDetector = () => {
     };
 
     getLocation();
-  }, []); // Empty dependency array to run the effect only once on component mount
+  }, []); 
+
+  const getWeather = async (lat,lang) => {
+    let response = await getUsingLatLong(lat, lang)
+    setCityName(response)
+  }
+
+  useEffect(() => {
+    if(location){
+      getWeather(location.latitude, location.longitude)
+    }
+  },[location])
 
   return (
     <div>

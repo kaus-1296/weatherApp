@@ -15,6 +15,8 @@ const Component = styled(Box)({
     width: '65%'
 })
 
+
+
 const Image = styled(Box)({
     backgroundImage : `url(${Sunset})`,
     width: '27%',
@@ -26,13 +28,14 @@ const Image = styled(Box)({
 const Home = () => {
 
     const [result, setResult] = useState({});
+    const [cityName, setCityName] = useState({})
 
     return(
         <Component>
             <Image></Image>
             <Box style={{ width: '73%', height: '80%'}}>
-                <Form setResult={setResult} />
-                <p className="text-center pt-2"><LocationDetector result={result} /></p>
+                <Form setResult={setResult} city={cityName} />
+                <p className="text-center pt-2"><LocationDetector result={result} setCityName={setCityName} /></p>
                 <Information result={result} />
             </Box>
         </Component>

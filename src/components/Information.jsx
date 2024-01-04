@@ -39,18 +39,8 @@ const Information = ({ result }) => {
         return `${formattedDay}/${formattedMonth}/${year}`;
     }
 
-    // const formatTimeTo24Hour = (timeString) => {
-    //     const [hours, minutes, seconds] = timeString.split(':');
-    //     const date = new Date(1970, 0, 1, hours, minutes, seconds);
-        
-    //     // Using toLocaleTimeString to format the time
-    //     return date.toLocaleTimeString('en-US', { hour12: false, hour: 'numeric', minute: 'numeric', second: 'numeric' });
-    //   };
-
     function convertTo24HourFormat(timeString) { 
         const [time, period] = timeString.split(' '); 
-        // console.log(time,"time")
-        // console.log(period,"period")
         const [hour, minute] = time.split(':'); 
         let formattedHour = parseInt(hour); 
       
